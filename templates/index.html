@@ -3,7 +3,12 @@
 <html>
 
 <head>
-
+    <script language="JavaScript">
+        function myrefresh() {
+            window.location.reload();
+        }
+        setInterval('myrefresh()',10000)
+    </script>
   <meta charset="UTF-8">
 
   <title>聊天窗口演示</title>
@@ -14,7 +19,7 @@
 
 <body>
 
-  <div id="convo" data-from="Sonu Joshi">  
+  <div id="convo" data-from="Sonu Joshi">
 <ul class="chat-thread">
     {% for text in texts %}
         <li>{{ text.speak }}</li>
