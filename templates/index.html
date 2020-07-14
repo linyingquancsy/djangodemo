@@ -1,0 +1,27 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <title>聊天窗口演示</title>
+
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" media="screen" type="text/css" />
+
+</head>
+
+<body>
+
+  <div id="convo" data-from="Sonu Joshi">  
+<ul class="chat-thread">
+    {% for text in texts %}
+        <li>{{ text.speak }}</li>
+        <li>{{ text.answer }}</li>
+    {% endfor %}
+</ul>
+</div>
+</body>
+
+</html>

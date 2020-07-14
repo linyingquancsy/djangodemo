@@ -1,0 +1,14 @@
+Index: demo_01/views.py
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- demo_01/views.py	(revision 902d755392ea0c85e49b4f60932c6a16b8564a54)
++++ demo_01/views.py	(date 1594701799196)
+@@ -2,5 +2,5 @@
+ from django.http import HttpResponse
+ 
+ def demo_01(request):
+-    return HttpResponse("hello word hello word")
++    return HttpResponse("hello word hello 1 word")
+ 
