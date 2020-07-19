@@ -1,18 +1,37 @@
+{% load static %}
 <!DOCTYPE html>
-<html lang="en">
+<html>
+
 <head>
-    <meta charset="UTF-8">
-    <title>demo_01_html</title>
-    <link rel="icon" href="img/demo.ico" type="text/html">
-    <link rel="stylesheet" href="css/demo_01.css">
+{#    <script language="JavaScript">#}
+{#        function myrefresh() {#}
+{#            window.location.reload();#}
+{#        }#}
+{#        setInterval('myrefresh()',1000)#}
+{#    </script>#}
+  <meta charset="UTF-8">
+
+  <title>手势识别结果</title>
+
+    <link rel="stylesheet" href="{% static 'css/demo_01.css' %}" media="screen" type="text/css" />
+
 </head>
+
 <body>
-    <header>头部</header>
-    <ul class="demo_01">
-        <li>内容1</li>
-        <li>内容2</li>
-        <li>内容3</li>
-    </ul>
-    <footer>尾部</footer>
+
+  <div id="convo" data-from="Sonu Joshi">
+<ul class="chat-thread">
+    {% for text in texts %}
+        <li>{{ text }}</li>
+    {% endfor %}
+</ul>
+</div>
+
+<div class="credits">
+    <h4>手势识别结果</h4>
+    <h4><a href="/">返回</a></h4>
+</div>
+
 </body>
+
 </html>

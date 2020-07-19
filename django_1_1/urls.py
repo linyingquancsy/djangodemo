@@ -16,7 +16,11 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from demo_01 import views
+
 urlpatterns = [
     # path('admin/', admin.site.urls),
-    path('',views.demo_01)
+    path('',views.index),
+    path('gesture/',views.demo_01),
+    path('voice/',views.demo_02),
+    path('video/',views.get_user_profiles)
 ]

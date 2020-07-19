@@ -1,32 +1,45 @@
 {% load static %}
+
 <!DOCTYPE html>
-<html>
-
+<html lang="en">
 <head>
-    <script language="JavaScript">
-        function myrefresh() {
-            window.location.reload();
+    <meta charset="UTF-8">
+    <title>首页</title>
+    <link rel="stylesheet" href="{% static 'css/demo_01.css' %}" media="screen" type="text/css" />
+    <style>
+        html,body {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
         }
-        setInterval('myrefresh()',10000)
-    </script>
-  <meta charset="UTF-8">
-
-  <title>聊天窗口演示</title>
-
-    <link rel="stylesheet" href="{% static 'css/style.css' %}" media="screen" type="text/css" />
-
+        .nav{
+            overflow: hidden;
+            width: 500px;
+            height: 150px;
+            background: rgba(0, 0, 0, 0);
+            margin: 0 auto;
+            position: relative;
+            top: 50%; /*偏移*/
+            margin-top: -150px;
+        }
+        .nav a{
+            display: inline;
+            margin: 50px;
+            margin-outside: 80px;
+            display: inline-block;
+            padding: 16px 40px 16px 20px;
+            margin: 0 0 20px 0;
+            font: 25px/20px 'Noto Sans', sans-serif;
+            border-radius: 10px;
+            background-color: rgba(25, 147, 147, 0.2);
+        }
+    </style>
 </head>
-
 <body>
-
-  <div id="convo" data-from="Sonu Joshi">
-<ul class="chat-thread">
-    {% for text in texts %}
-        <li>{{ text.speak }}</li>
-        <li>{{ text.answer }}</li>
-    {% endfor %}
-</ul>
-</div>
+    <ul class="nav">
+        <a href="/voice/">语言识别</a>
+        <a href="/gesture/">手势识别</a>
+    </ul>
 </body>
-
 </html>
