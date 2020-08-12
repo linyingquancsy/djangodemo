@@ -16,11 +16,12 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from demo_01 import views
+from demo_01.views import index, voice, gesture
 
 urlpatterns = [
     # path('admin/', admin.site.urls),
-    path('',views.index),
-    path('gesture/',views.demo_01),
-    path('voice/',views.demo_02),
+    path('', index.as_view()),
+    path('gesture/',gesture.as_view()),
+    path('voice/',voice.as_view()),
     path('video/',views.get_user_profiles)
 ]

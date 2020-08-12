@@ -18,7 +18,7 @@
 </head>
 
 <body>
-
+<p>{{ age }}</p>
   <div id="convo" data-from="Sonu Joshi">
 <ul class="chat-thread">
     {% for text in texts %}
@@ -31,6 +31,18 @@
     <h4>语音识别结果</h4>
     <h4><a href="/">返回</a></h4>
 </div>
+
+    {% if age == 1 %}
+        <p>跳转到首页</p>
+        <p>两秒钟后转入如下链接，如果长时间没有响应请直接点击：</p>
+        <p><a href="index.html">index</a></p>
+        <meta http-equiv="refresh" content="2;url=http://127.0.0.1:8000/">
+    {% elif age == 3 %}
+        <p>跳转到手势识别页面</p>
+        <p>两秒钟后转入如下链接，如果长时间没有响应请直接点击：</p>
+        <p><a href="demo_01.html">gesture</a></p>
+        <meta http-equiv="refresh" content="2;url=http://127.0.0.1:8000/gesture">
+    {% endif %}
 
 </body>
 

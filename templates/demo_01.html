@@ -3,22 +3,13 @@
 <html>
 
 <head>
-{#    <script language="JavaScript">#}
-{#        function myrefresh() {#}
-{#            window.location.reload();#}
-{#        }#}
-{#        setInterval('myrefresh()',1000)#}
-{#    </script>#}
   <meta charset="UTF-8">
-
   <title>手势识别结果</title>
-
     <link rel="stylesheet" href="{% static 'css/demo_01.css' %}" media="screen" type="text/css" />
-
 </head>
 
 <body>
-
+<p>{{ age }}</p>
   <div id="convo" data-from="Sonu Joshi">
 <ul class="chat-thread">
     {% for text in texts %}
@@ -31,6 +22,18 @@
     <h4>手势识别结果</h4>
     <h4><a href="/">返回</a></h4>
 </div>
+
+    {% if age == 1 %}
+        <p>即将跳转到首页</p>
+        <p>两秒钟后转入如下链接，如果长时间没有响应请直接点击：</p>
+        <p><a href="index.html">index</a></p>
+        <meta http-equiv="refresh" content="2;url=http://127.0.0.1:8000/">
+    {% elif age == 2 %}
+        <p>即将跳转到语音识别页面</p>
+        <p>两秒钟后转入如下链接，如果长时间没有响应请直接点击：</p>
+        <p><a href="demo_02.html">voice2</a></p>
+        <meta http-equiv="refresh" content="2;url=http://127.0.0.1:8000/voice/">
+    {% endif %}
 
 </body>
 

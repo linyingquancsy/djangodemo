@@ -1,48 +1,86 @@
-from django.shortcuts import render
-from django.http import HttpResponse
+from django.shortcuts import render, redirect
+from django.http import HttpResponse, HttpResponseRedirect
 import os
-from django.conf import settings
+import time
+from django.views.generic.base import View
+
+# age=  1：表示首页，  2：表示语音，  3：表示手势
 
 context = {
-    'texts':[]
+    'texts':[],
+    'age': 0
 }
 result = {
-    'texts':[]
+    'texts':[],
+    'age': 0
+}
+url = {
+    'age': '*'
 }
 
-def index(request):
-    return render(request, 'index.html')
-
-def demo_01(request):
+class index(View):
     '''
-    手势识别
-    :param request:
-    :return:
+    首页
     '''
-    if request.method == 'POST':
-        ges = request.POST.get('gesture',0)
-        print("######",ges)
-        result['texts'].append(ges)
-        if len(result['texts'])>3:
-            del result['texts'][0]
-    return render(request, 'demo_01.html', context=result)
+    def get(self, request):
+        return render(request, "index.html", context=url)
+    def post(self, request):
+        print("post&&&&&&&&&&&&&&&&&&&&&&&")
+        if request.POST.get("data") == "v":
+            print("###########", url['age'])
+            url['age'] = 2
+            context['age'] = 0
+            result['age'] = 0
+        elif request.POST.get("data") == "g":
+            url['age'] = 3
+            context['age'] = 0
+            result['age'] = 0
 
-
-def demo_02(request):
+class voice(View):
     '''
     语音识别
-    获取树莓派上传的数据，3个一循环
-    :param request:
-    :return:
     '''
-    print(request.method)
-    if request.method == 'POST':
-        speak = request.POST.get('speak',0)
-        addtext(context,speak)
-        print("len:",len(context['texts']))
-        if len(context['texts'])>3:
+    def get(self, request):
+        return render(request, 'demo_02.html', context=context)
+    def post(self, request):
+        speak = request.POST.get('speak', 0)
+        addtext(context, speak)
+        print("len:", len(context['texts']))
+        if len(context['texts']) > 3:
             del context['texts'][0]
-    return render(request, 'demo_02.html', context=context)
+        if request.POST.get("data") == 'break':
+            print("返回首页")
+            context['age'] = 1
+            url['age'] = 0
+            result['age'] = 0
+        elif request.POST.get("data") == 'g':
+            print("跳转手势")
+            context['age'] = 3
+            url['age'] = 0
+            result['age'] = 0
+
+class gesture(View):
+    '''
+    手势识别
+    '''
+    def get(self, request):
+        return render(request, 'demo_01.html', context=result)
+    def post(self, request):
+        ges = request.POST.get('gesture', 0)
+        print("######", ges)
+        result['texts'].append(ges)
+        if len(result['texts']) > 3:
+            del result['texts'][0]
+        if request.POST.get("data") == 'break':
+            print("返回首页")
+            result['age'] = 1
+            context['age'] = 0
+            url['age'] = 0
+        elif request.POST.get("data") == 'v':
+            print("跳转语音")
+            result['age'] = 2
+            context['age'] = 0
+            url['age'] = 0
 
 def addtext(context,result):
     context['texts'].append(result)

@@ -37,9 +37,23 @@
     </style>
 </head>
 <body>
+<p>{{ age }}</p>
     <ul class="nav">
         <a href="/voice/">语言识别</a>
         <a href="/gesture/">手势识别</a>
+        {% if age == 2 %}
+            <p>跳转到voice页面</p>
+            <p>两秒钟后转入如下链接，如果长时间没有响应请直接点击：</p>
+            <p><a href="voice">voice2</a></p>
+            <meta http-equiv="refresh" content="2;url=voice">
+        {% elif age == 3 %}
+            <p>跳转到gerture页面</p>
+            <p>两秒钟后转入如下链接，如果长时间没有响应请直接点击：</p>
+            <p><a href="gesture">voice2</a></p>
+            <meta http-equiv="refresh" content="2;url=gesture">
+        {% endif %}
+
     </ul>
+
 </body>
 </html>
