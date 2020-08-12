@@ -43,8 +43,11 @@ class voice(View):
     def get(self, request):
         return render(request, 'demo_02.html', context=context)
     def post(self, request):
-        speak = request.POST.get('speak')
-        addtext(context, speak)
+        speak = request.POST.get('speak', 0)
+        if speak==0:
+            pass
+        else:
+            addtext(context, speak)
         print("len:", len(context['texts']))
         if len(context['texts']) > 3:
             del context['texts'][0]
@@ -66,9 +69,11 @@ class gesture(View):
     def get(self, request):
         return render(request, 'demo_01.html', context=result)
     def post(self, request):
-        ges = request.POST.get('gesture')
-        print("######", ges)
-        result['texts'].append(ges)
+        ges = request.POST.get('gesture', 0)
+        if ges==0:
+            pass
+        else:
+            result['texts'].append(ges)
         if len(result['texts']) > 3:
             del result['texts'][0]
         if request.POST.get("data") == 'break':
