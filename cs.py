@@ -17,13 +17,23 @@ import time
 
 # 首页
 # res = requests.post('http://127.0.0.1:8000/voice/', data={'data': "break"})
-res = requests.post('http://127.0.0.1:8000/voice/', data={'data': "g"})
-# res = requests.post('http://127.0.0.1:8000/gesture/', data={'data': "break"})
+# res = requests.post('http://127.0.0.1:8000/voice/', data={'data': "g"})
+res = requests.post('http://127.0.0.1:8000/gesture/', data={'data': "break"})
 # res = requests.post('http://127.0.0.1:8000/gesture/', data={'data': "v"})
 # 语音
 # res = requests.post('http://127.0.0.1:8000', data={'data': "v"})
 # 手势
 # res = requests.post('http://127.0.0.1:8000', data={'data': "g"})
+
+# 首页
+# res = requests.post('http://118.89.241.50:8000/voice/', data={'data': "break"})
+# res = requests.post('http://118.89.241.50:8000/voice/', data={'data': "g"})
+# res = requests.post('http://118.89.241.50:8000/gesture/', data={'data': "break"})
+# res = requests.post('http://118.89.241.50:8000/gesture/', data={'data': "v"})
+# 语音
+# res = requests.post('http://118.89.241.50:8000', data={'data': "v"})
+# 手势
+# res = requests.post('http://118.89.241.50', data={'data': "g"})
 
 # import requests
 # import json
