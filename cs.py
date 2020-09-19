@@ -1,5 +1,5 @@
-import requests
-import time
+# import requests
+# import time
 
 # r = requests.get('http://127.0.0.1:8000/?data=v')
 # res = requests.post('http://127.0.0.1:8000', data={'data': "v"})
@@ -18,7 +18,7 @@ import time
 # 首页
 # res = requests.post('http://127.0.0.1:8000/voice/', data={'data': "break"})
 # res = requests.post('http://127.0.0.1:8000/voice/', data={'data': "g"})
-res = requests.post('http://127.0.0.1:8000/gesture/', data={'data': "break"})
+# res = requests.post('http://127.0.0.1:8000/gesture/', data={'data': "break"})
 # res = requests.post('http://127.0.0.1:8000/gesture/', data={'data': "v"})
 # 语音
 # res = requests.post('http://127.0.0.1:8000', data={'data': "v"})
@@ -33,7 +33,7 @@ res = requests.post('http://127.0.0.1:8000/gesture/', data={'data': "break"})
 # 语音
 # res = requests.post('http://118.89.241.50:8000', data={'data': "v"})
 # 手势
-# res = requests.post('http://118.89.241.50', data={'data': "g"})
+# res = requests.post('http://118.89.241.50:8000', data={'data': "g"})
 
 # import requests
 # import json
@@ -68,3 +68,50 @@ res = requests.post('http://127.0.0.1:8000/gesture/', data={'data': "break"})
 #
 # a = UploadTest()
 # a.test_upload()
+
+
+# import time
+# import RPi.GPIO as GPIO
+# import requests
+#
+# ip = '118.89.241.50:8000'
+#
+# # gpio13——对应按键数字1
+# GPIO.setmode(GPIO.BCM)
+# gpio_num13 = 13
+# GPIO.setup(gpio_num13, GPIO.IN, pull_up_down=GPIO.PUD_UP)
+# # gpio19——对应按键数字2
+# GPIO.setmode(GPIO.BCM)
+# gpio_num19 = 19
+# GPIO.setup(gpio_num19, GPIO.IN, pull_up_down=GPIO.PUD_UP)
+# # gpio26——对应按键数字3
+# GPIO.setmode(GPIO.BCM)
+# gpio_num26 = 26
+# GPIO.setup(gpio_num26, GPIO.IN, pull_up_down=GPIO.PUD_UP)
+#
+# def anjian_demo():
+#     while True:
+#         try:
+#             if GPIO.input(gpio_num13) == 0:
+#                 time.sleep(0.1)
+#                 print("1被按下")
+#                 res = requests.post('http://'+ip+'/gesture/', data={'data': "break"})
+#                 res = requests.post('http://'+ip+'/voice/', data={'data': "break"})
+#             elif GPIO.input(gpio_num19) == 0:
+#                 time.sleep(0.1)
+#                 print("2被按下")
+#                 res = requests.post('http://'+ip, data={'data': "v"})
+#                 res = requests.post('http://'+ip+'/gesture/', data={'data': "v"})
+#             elif GPIO.input(gpio_num26) == 0:
+#                 time.sleep(0.1)
+#                 print("3被按下")
+#                 res = requests.post('http://'+ip, data={'data': "g"})
+#                 res = requests.post('http://'+ip+'/voice/', data={'data': "g"})
+#         except:
+#             print("按键错误")
+#             break
+#
+# anjian_demo()
+
+
+
